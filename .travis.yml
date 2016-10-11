@@ -17,12 +17,14 @@ before_install:
   - export PATH=$HOME/.local/bin:$PATH
   - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
 
-  # Setup Stack and install dependencies for tools
-  - stack setup --no-terminal
-  
-  # Install GHCVM dev build
+  # Download GHCVM dev build
   - git clone --recursive https://github.com/rahulmutt/ghcvm
   - cd ghcvm
+
+  # Setup Stack
+  - stack setup --no-terminal
+  
+  # Install ghcvm
   - ./cleaninstall.sh
   - cd ..
 
